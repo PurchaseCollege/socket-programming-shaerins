@@ -7,7 +7,7 @@ if(__name__ == "__main__"):
 my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # 2. "Bind" the socket to an IP and PORT
-my_socket.bind(("localhost", 3000))
+my_socket.bind(("localhost", 3001))
 
 # 3. Begin "listening" on the socket
 my_socket.listen(5)
@@ -26,13 +26,12 @@ data = conn.recv(1024)
 data_string = str(data)
 get_string = str(data)
 
-if not data: break
 conn.sendall(data)
 
 for i in range(0, len(data_string)):
     if(data_string[i:i+4] == "\\r\\n"):
         get_string = data_string[2:i]
-        print(x)
+        print(get_string)
         break
 
 if(get_string[0:3] == "GET"):
